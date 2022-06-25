@@ -1,0 +1,62 @@
+<import from="components/itinerary-input"></import>
+<import from="components/calculation-result.html"></import>
+<import from="components/disclaimer.html"></import>
+
+<containerless/>
+
+<div class="sm:p-4">
+  <div blur-sm.class="showResults" select-none.class="showResults">
+    <div class="w-full px-4 text-xs md:text-right text-sky-700">
+      Skymiles Estimator ${buildVersion} (${buildDate})
+    </div>
+    <itinerary-input
+      itinerary.bind="itinerary"
+      calculated.bind="calculatedResult"
+      reset-itinerary.call="resetItinerary()"
+      itinerary-changed.call="itineraryChanged()"
+      toggle-details.call="showResults = true">
+    </itinerary-input>
+    <div class="absolute top-0 left-0 w-full h-full"
+         hidden.class="!showResults"
+         click.trigger="showResults = false & debounce:200">
+      &nbsp;
+    </div>
+  </div>
+  <div hidden.class="!showResults" select-none.class="!showResults">
+    <div ref="resultsBox"
+         class="absolute top-0 left-0 w-screen h-screen p-6 grid">
+      <div class="absolute top-0 left-0 w-full h-full"
+           click.trigger="showResults = false & debounce:200">
+      </div>
+      <div
+        class="place-self-center min-w-fit lg:w-1/2 drop-shadow-xl shadow rounded-sm sm:rounded-md sm:overflow-hidden border border-1 border-gray-400">
+        <div class="px-4 py-5 bg-slate-200 sm:p-6">
+          <div class="pb-1 text-xs md:text-right text-sky-700">
+            Skymiles Estimator ${buildVersion} (${buildDate})
+          </div>
+          <calculation-result itinerary.bind="calculatedResult"></calculation-result>
+          <div class="inline-block pt-2 pb-6 md:pb-4 text-md flex gap-2">
+            Share Itinerary:
+            <a class="text-left text-sky-700 underline decoration-sky-400"
+               href="https://twitter.com/intent/tweet?url=${encodedWindowLocation}">Tweet</a>
+            <a class="text-left text-sky-700 underline decoration-sky-400"
+               href="#results/${itinerarySerialized}">Link</a>
+          </div>
+          <div class="flex flex-wrap">
+            <div class="lg:w-3/4">
+              <disclaimer></disclaimer>
+            </div>
+            <div class="flex-auto mt-2 text-right">
+              <button
+                class="inline-flex justify-center px-2 py-0.5 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-amber-600 hover:bg-amber-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+                type="submit"
+                click.trigger="showResults = false & debounce:200">
+                Hide Earning Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,123 @@
+<import from="converters/decimal-places-converter"></import>
+
+<import from="components/form-elements/input-usd.html"></import>
+<import from="components/form-elements/labeled-value.html"></import>
+<import from="components/form-elements/select-creditcard"></import>
+<import from="components/form-elements/select-medallionstatus"></import>
+<import from="components/form-elements/select-ticketseller"></import>
+<import from="components/itinerary-segment-input"></import>
+<import from="components/disclaimer.html"></import>
+
+<bindable name="calculated"></bindable>
+<bindable name="resetItinerary"></bindable>
+<bindable name="toggleDetails"></bindable>
+
+<containerless/>
+
+<div class="drop-shadow-xl shadow sm:rounded-md sm:overflow-hidden border border-1 border-gray-400">
+  <div class="px-4 pt-5 pb-4 bg-gray-100 sm:p-6 sm:pb-4 border-b border-gray-200">
+    <div class="grid grid-rows-4 sm:grid-flow-col sm:auto-cols-fr gap-2">
+      <select-medallionstatus
+        label="Medallion Status"
+        selected.bind="itinerary.medallionStatus"
+        change.bind="triggerItineraryChanged.bind($this)">
+      </select-medallionstatus>
+      <select-ticketseller
+        label="Seller"
+        selected.bind="itinerary.soldBy"
+        change.bind="triggerItineraryChanged.bind($this)">
+      </select-ticketseller>
+      <select-creditcard
+        label="Credit Card"
+        selected.bind="itinerary.creditCard"
+        change.bind="triggerItineraryChanged.bind($this)">
+      </select-creditcard>
+
+      <div class="block">&nbsp;</div>
+
+      <input-usd label="Base Cost" value.bind="baseCost"></input-usd>
+      <input-usd label="Airline Fees" value.bind="airlineFees"></input-usd>
+      <input-usd label="Taxes and Government Fees" value.bind="governmentFeesAndTaxes"></input-usd>
+
+      <labeled-value label="Total Cost" value="USD $ ${totalCost | decimalPlaces:2}"></labeled-value>
+
+      <div class="hidden xl:block xl:row-span-4">
+      </div>
+    </div>
+  </div>
+  <div class="p-4 bg-gray-100 sm:px-6 sm:py-4 border-b border-gray-300">
+    <div class="flex flex-wrap gap-2">
+      <div class="flex-1 space-y-1 space-x-1 mt-1">
+        <button
+          class="inline-flex justify-center px-2 py-0.5 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-600"
+          type="submit"
+          click.trigger="resetItinerary() & debounce:200">
+          Reset Itinerary
+        </button>
+      </div>
+      <div class="flex-auto text-right space-y-1 space-x-1 select-none">
+        <button
+          class="inline-flex justify-center px-2 py-0.5 border border-transparent shadow-sm text-sm font-medium rounded-md text-white disabled:cursor-not-allowed disabled:bg-red-100 bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-400"
+          type="submit"
+          disabled.bind="itinerary.segments.length < 2"
+          click.trigger="removeSegment() & debounce:200">
+          Remove Segment
+        </button>
+        <button
+          class="inline-flex justify-center px-2 py-0.5 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-teal-600 hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+          type="submit"
+          click.trigger="addSegment() & debounce:200">
+          Add Segment
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="px-4 py-5 bg-white sm:px-6 sm:py-4">
+    <div class="grid grid-flow-row gap-2">
+      <itinerary-segment-input class="group"
+                               repeat.for="segment of itinerary.segments"
+                               segment.bind="segment"
+                               destination-changed.bind="updateDestination.bind($parent,$index)"
+                               segment-changed.bind="otherValueChanged.bind($parent)">
+      </itinerary-segment-input>
+    </div>
+  </div>
+  <div class="px-4 py-5 pt-4 bg-gray-100 sm:p-6 sm:pt-4 border-t border-gray-300">
+    <div class="grid grid-flow-row md:grid-cols-6 gap-2 items-center">
+      <labeled-value label="Total Cost" value="USD $ ${totalCost | decimalPlaces:2}"></labeled-value>
+      <labeled-value label="Total Distance" value.bind="totalDistance"></labeled-value>
+      <div class="order-first md:order-none md:col-span-4 text-right space-y-1 space-x-1 select-none">
+        <button
+          class="inline-flex justify-center px-2 py-0.5 border border-transparent shadow-sm text-sm font-medium rounded-md text-white disabled:cursor-not-allowed disabled:bg-red-100 bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-400"
+          type="submit"
+          disabled.bind="itinerary.segments.length < 2"
+          click.trigger="removeSegment() & debounce:200">
+          Remove Segment
+        </button>
+        <button
+          class="inline-flex justify-center px-2 py-0.5 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-teal-600 hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+          type="submit"
+          click.trigger="addSegment() & debounce:200">
+          Add Segment
+        </button>
+      </div>
+      <labeled-value label="Total Earned Miles" value.bind="calculated.totalMiles"></labeled-value>
+      <labeled-value label="Total Earned MQM" value.bind="calculated.totalMedallionQualificationMiles"></labeled-value>
+      <labeled-value label="Total Earned MQS"
+                     value.bind="calculated.totalMedallionQualificationSegments"></labeled-value>
+      <labeled-value label="Total Earned MQD"
+                     value.bind="calculated.totalMedallionQualificationDollars"></labeled-value>
+      <div class="block md:col-span-2 text-right">
+        <button
+          class="inline-flex justify-center px-2 py-0.5 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-amber-600 hover:bg-amber-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+          type="submit"
+          click.trigger="toggleDetails() & debounce:200">
+          Show Earning Details
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="px-4 py-5 pt-4 bg-white sm:p-6 sm:pt-4 border-t border-gray-300">
+    <disclaimer></disclaimer>
+  </div>
+</div>

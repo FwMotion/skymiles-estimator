@@ -1,0 +1,28 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="
+            http://www.w3.org/2001/XMLSchema-instance https://www.w3.org/2001/XMLSchema-instance
+            http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+    <id>javascript</id>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <baseDirectory>${project.artifactId}</baseDirectory>
+    <formats>
+        <format>jar</format>
+    </formats>
+    <fileSets>
+        <fileSet>
+            <directory>${project.build.directory}/js</directory>
+            <includes>
+                <!-- Include Javscript files -->
+                <include>**/*.js</include>
+
+                <!-- Include sourcemap files -->
+                <include>**/*.js.map</include>
+
+                <!-- Include Kotlin JS Module files -->
+                <include>**/*.kjsm</include>
+            </includes>
+            <outputDirectory/>
+        </fileSet>
+    </fileSets>
+</assembly>

@@ -1,0 +1,27 @@
+<import from="converters/decimal-places-converter"></import>
+<import from="behaviors/type-binding-behavior"></import>
+
+<bindable name="label"></bindable>
+
+<containerless/>
+
+<label class="block grid grid-flow-row grid-col-4">
+  <div class="block col-span-4 text-sm font-medium text-gray-700 select-none">
+    ${label}
+  </div>
+  <select
+    class="block col-span-1 w-15 pl-3 pr-0.5 text-right text-gray-700 font-semibold bg-left bg-gray-100 focus:ring-teal-600 focus:border-teal-600 rounded-l-md border-r-transparent sm:text-sm border-gray-300"
+    value.bind="selectedAirline">
+    <option repeat.for="airline of availableAirlines"
+            model.bind="airline">
+      ${airline.selectionCode}
+    </option>
+  </select>
+  <input
+    class="block col-span-3 w-full pl-0.5 pr-1 focus:ring-teal-600 focus:border-teal-600 rounded-none rounded-r-md border-l-transparent sm:text-sm border-gray-300 selection:bg-teal-600 selection:text-white"
+    type="text"
+    minlength="3"
+    maxlength="4"
+    placeholder="5035"
+    value.bind="flightNumber | decimalPlaces:0 & debounce:800 & type:'number'"/>
+</label>

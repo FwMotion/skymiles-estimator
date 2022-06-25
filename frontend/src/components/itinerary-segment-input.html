@@ -1,0 +1,68 @@
+<import from="components/form-elements/input-flight-number"></import>
+<import from="components/form-elements/labeled-value.html"></import>
+<import from="components/form-elements/select-airline"></import>
+<import from="components/form-elements/select-airportcode"></import>
+<import from="components/form-elements/select-fareclass"></import>
+
+<containerless/>
+
+<div class="p-3 rounded-lg border border-gray-200 bg-gray-50 group-odd:bg-gray-50 group-even:bg-stone-50">
+  <div class="grid grid-flow-row md:grid-cols-8 md:auto-cols-fr gap-2">
+    <div class="block col-span-2 md:order-1">
+      <input-flight-number
+        label="Flight Number"
+        selected-airline.bind="segment.marketedBy"
+        flight-number.bind="segment.marketedFlightNumber"
+        change.call="triggerSegmentChanged()">
+      </input-flight-number>
+    </div>
+    <div class="block col-span-2 md:order-1">
+      <select-airline
+        label="Ticketed By"
+        display-form="long"
+        selected.bind="segment.ticketedBy"
+        change.call="triggerSegmentChanged()">
+      </select-airline>
+    </div>
+    <div class="block col-span-2 md:order-1">
+      <select-airline
+        label="Operated By"
+        display-form="long"
+        selected.bind="segment.operatedBy"
+        change.call="triggerSegmentChanged()">
+      </select-airline>
+    </div>
+    <div class="hidden md:block md:col-span-1 md:order-1">
+    </div>
+    <div class="block md:order-3">
+      <select-airportcode
+        label="Origin"
+        selected.bind="segment.origin"
+        change.bind="originChanged.bind($this)">
+      </select-airportcode>
+    </div>
+    <div class="block md:order-3">
+      <select-airportcode
+        label="Destination"
+        available.bind="availableDestinations"
+        selected.bind="segment.destination"
+        change.bind="destinationChanged.bind($this)">
+      </select-airportcode>
+    </div>
+    <div class="block col-span-2 md:col-span-3 md:order-3">
+      <select-fareclass
+        label="Fare Class"
+        display-form="both"
+        marketed-by.bind="segment.marketedBy"
+        selected.bind="segment.fareClass"
+        change.call="triggerSegmentChanged()">
+      </select-fareclass>
+    </div>
+    <div class="block col-span-2 md:col-span-1 md:order-2">
+      <labeled-value
+        label="Distance"
+        value.bind="distance">
+      </labeled-value>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<bindable name="label"></bindable>
+
+<containerless/>
+
+<label class="block w-full">
+  <div class="block text-sm font-medium text-gray-700 select-none">
+    ${label}
+  </div>
+  <select class="block w-full focus:ring-teal-600 focus:border-teal-600 rounded-md sm:text-sm border-gray-300"
+          value.bind="selected">
+    <option repeat.for="fareClass of available"
+            model.bind="fareClass">
+      ${renderFareClassName(fareClass)}
+    </option>
+  </select>
+</label>

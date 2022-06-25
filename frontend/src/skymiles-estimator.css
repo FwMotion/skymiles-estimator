@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    select,
+    [type="text"], [type="email"], [type="url"], [type="password"],
+    [type="number"], [type="date"], [type="datetime-local"], [type="month"],
+    [type="search"], [type="tel"], [type="time"], [type="week"] {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+@layer utilities {
+    .table-header-group {
+        display: table-header-group;
+    }
+    .table-row-group {
+        display: table-row-group;
+    }
+    .table-footer-group {
+        display: table-footer-group;
+    }
+    .table-row {
+        display: table-row;
+    }
+    .table-cell {
+        display: table-cell;
+    }
+}

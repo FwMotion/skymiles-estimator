@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+            http://www.w3.org/2001/XMLSchema-instance https://www.w3.org/2001/XMLSchema-instance
+            http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.fwmotion</groupId>
+        <artifactId>skymiles-estimator-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>./parent</relativePath>
+    </parent>
+
+    <artifactId>skymiles-estimator-aggregate</artifactId>
+    <packaging>pom</packaging>
+
+    <name>Skymiles Estimator (project aggregator)</name>
+    <description><![CDATA[
+      Manages the build of multiple sub-projects related to the Skymiles Estimator
+    ]]></description>
+
+    <modules>
+        <module>parent</module>
+        <module>calculator</module>
+        <module>frontend</module>
+    </modules>
+
+</project>

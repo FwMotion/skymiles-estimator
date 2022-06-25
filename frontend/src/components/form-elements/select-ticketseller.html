@@ -1,0 +1,18 @@
+<bindable name="label"></bindable>
+<bindable name="change"></bindable>
+
+<containerless/>
+
+<label class="block">
+  <div class="block text-sm font-medium text-gray-700 select-none">
+    ${label}
+  </div>
+  <select class="block w-full focus:ring-teal-600 focus:border-teal-600 rounded-md sm:text-sm border-gray-300"
+          value.bind="selected"
+          change.trigger="change.apply($parent,$event)">
+    <option repeat.for="seller of available"
+            model.bind="seller">
+      ${seller.displayName}
+    </option>
+  </select>
+</label>
