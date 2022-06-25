@@ -121,6 +121,7 @@ val segmentDistances: Map<Pair<AirportCode, AirportCode>, DistanceMiles> = build
         AirportCode.BKK to AirportCode.ICN to 2270.0,  // calculated from booking flow total MQMs
         AirportCode.CDG to AirportCode.DTW to 3962.0,  // calculated from booking flow total MQMs
         AirportCode.CDG to AirportCode.HND to 6046.0,  // estimated from airmilescalculator.com
+        AirportCode.CDG to AirportCode.SEA to 5016.0,  // calculated from booking flow total MQMs
         AirportCode.CUN to AirportCode.LAX to 2119.0,  // calculated from booking flow total MQMs
         AirportCode.CUN to AirportCode.SLC to 2005.0,  // calculated from booking flow total MQMs
         AirportCode.CVG to AirportCode.JFK to 589.0,   // calculated from booking flow total MQMs

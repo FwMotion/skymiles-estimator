@@ -91,3 +91,19 @@
   </tr>
   </tfoot>
 </table>
+<table class="float-right table-auto auto-cols-fr border-collapse">
+  <thead class="inline sm:table-header-group text-xs sm:text-sm lg:text-md font-semibold bg-slate-200">
+  <tr class="block float-left sm:table-row sm:float-none">
+    <th class="block sm:table-cell px-1 border border-0.5 sm:border-l-0 border-gray-300 text-center">MQM/$</th>
+    <th class="block sm:table-cell px-1 border border-0.5 border-gray-300 text-center">MQD/$</th>
+    <th class="block sm:table-cell px-1 border border-0.5 sm:border-r-0 border-gray-300 text-center">Miles/$</th>
+  </tr>
+  </thead>
+  <tbody class="inline sm:table-row-group text-xs lg:text-md font-medium">
+  <tr class="block float-left sm:table-row sm:float-none odd:bg-white even:bg-gray-100">
+  <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-right">${itinerary.totalMedallionQualificationMiles / itinerary.totalCost | decimalPlaces:2}</td>
+  <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-right">${itinerary.totalMedallionQualificationDollars / itinerary.totalCost | decimalPlaces:2}</td>
+  <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-right">${itinerary.totalMiles / itinerary.totalCost | decimalPlaces:2}</td>
+  </tr>
+  </tbody>
+</table>

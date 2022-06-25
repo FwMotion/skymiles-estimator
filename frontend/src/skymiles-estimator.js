@@ -116,6 +116,9 @@ export class SkymilesEstimator {
       case 2:
         sampleItinerary = "#PKE1650/223.7/119.17DL_RESERVE/MCIMSPKE3820DLKEW/MSPICNKE5034DLKEW/ICNBKKKE651KEKEK/BKKICNKE660KEKEK/ICNMSPKE5033DLKEW/MSPMCIDL2527DLKEW"
         break
+      case 3:
+        sampleItinerary = "#PAF8830/_/159.87DL_RESERVE/SEACDGAF_INTL367AF_INTLAF_INTLI/CDGHNDAF_INTL274AF_INTLAF_INTLI/HNDCDGAF_INTL293AF_INTLAF_INTLI/CDGSEAAF_INTL368AF_INTLAF_INTLI"
+        break
     }
 
     this.itinerary = Itinerary.Companion.parseFromSerializedCode(sampleItinerary)
