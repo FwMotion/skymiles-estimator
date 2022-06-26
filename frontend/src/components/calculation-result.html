@@ -35,21 +35,21 @@
   <tr repeat.for="segment of itinerary.segments"
       class="block float-left sm:table-row sm:float-none odd:bg-white even:bg-gray-100">
     <td class="block sm:table-cell px-1 border border-0.5 sm:border-l-0 border-gray-200 text-center">${$index + 1}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-left">${segment.marketedBy.displayCode}${segment.marketedFlightNumber}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-center">${segment.origin}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-center">${segment.destination</td>
-    <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-center">${segment.fareClass}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-right">${segment.distance}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-right">$${segment.segmentEarningEligibleCost | decimalPlaces:2}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-right">$${segment.segmentTotalCost | decimalPlaces:2}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-right">${segment.medallionQualificationMiles}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-right sm:text-center">${segment.medallionQualificationSegments}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-right">${segment.medallionQualificationDollars}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-right">${segment.baseMiles}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-right">${segment.fareClassBonusMiles}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-right">${segment.medallionStatusBonusMiles}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-right">${segment.creditCardBonusMiles}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 sm:border-r-0 border-gray-200 text-right font-semibold">${segment.totalMiles}</td>
+    <td class="block sm:table-cell px-1 border border-0.5               border-gray-200 text-left">${segment.marketedBy.displayCode}${segment.marketedFlightNumber}</td>
+    <td class="block sm:table-cell px-1 border border-0.5               border-gray-200 text-center">${segment.origin}</td>
+    <td class="block sm:table-cell px-1 border border-0.5               border-gray-200 text-center">${segment.destination</td>
+    <td class="block sm:table-cell px-1 border border-0.5               border-gray-200 text-center">${segment.fareClass}</td>
+    <td class="block sm:table-cell px-1 border border-0.5               border-gray-200 tabular-nums text-right">${segment.distance}</td>
+    <td class="block sm:table-cell px-1 border border-0.5               border-gray-200 tabular-nums text-right">$${segment.segmentEarningEligibleCost | decimalPlaces:2}</td>
+    <td class="block sm:table-cell px-1 border border-0.5               border-gray-200 tabular-nums text-right">$${segment.segmentTotalCost | decimalPlaces:2}</td>
+    <td class="block sm:table-cell px-1 border border-0.5               border-gray-200 tabular-nums text-right">${segment.medallionQualificationMiles}</td>
+    <td class="block sm:table-cell px-1 border border-0.5               border-gray-200 tabular-nums text-right sm:text-center">${segment.medallionQualificationSegments}</td>
+    <td class="block sm:table-cell px-1 border border-0.5               border-gray-200 tabular-nums text-right">${segment.medallionQualificationDollars}</td>
+    <td class="block sm:table-cell px-1 border border-0.5               border-gray-200 tabular-nums text-right">${segment.baseMiles}</td>
+    <td class="block sm:table-cell px-1 border border-0.5               border-gray-200 tabular-nums text-right">${segment.fareClassBonusMiles}</td>
+    <td class="block sm:table-cell px-1 border border-0.5               border-gray-200 tabular-nums text-right">${segment.medallionStatusBonusMiles}</td>
+    <td class="block sm:table-cell px-1 border border-0.5               border-gray-200 tabular-nums text-right">${segment.creditCardBonusMiles}</td>
+    <td class="block sm:table-cell px-1 border border-0.5 sm:border-r-0 border-gray-200 tabular-nums text-right font-semibold">${segment.totalMiles}</td>
   </tr>
   </tbody>
   <tfoot class="inline sm:table-footer-group text-xs lg:text-md font-semibold bg-slate-400">
@@ -59,34 +59,34 @@
     <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 border-y-transparent text-center" colspan="5">Total</td>
     <td class="block sm:hidden     px-1 border border-0.5 sm:border-0 border-slate-500 border-y-transparent text-center">&nbsp;</td>
     <td class="block sm:hidden     px-1 border border-0.5 sm:border-0 border-slate-500 border-t-transparent text-center">&nbsp;</td>
-    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 text-right">${itinerary.totalDistance}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 text-right">$${(itinerary.baseCost + itinerary.airlineFees) | decimalPlaces:2}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 text-right">$${itinerary.totalCost | decimalPlaces:2}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 text-right">${itinerary.totalMedallionQualificationMiles}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 text-right sm:text-center">${itinerary.totalMedallionQualificationSegments}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 text-right">${itinerary.totalMedallionQualificationDollars}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 text-right">${itinerary.totalBaseMiles}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 text-right">${itinerary.totalFareClassBonusMiles}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 text-right">${itinerary.totalMedallionStatusBonusMiles}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 text-right">${itinerary.totalCreditCardBonusMiles}</td>
-    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 text-right font-bold">${itinerary.totalMiles}</td>
+    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 tabular-nums text-right">${itinerary.totalDistance}</td>
+    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 tabular-nums text-right">$${(itinerary.baseCost + itinerary.airlineFees) | decimalPlaces:2}</td>
+    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 tabular-nums text-right">$${itinerary.totalCost | decimalPlaces:2}</td>
+    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 tabular-nums text-right">${itinerary.totalMedallionQualificationMiles}</td>
+    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 tabular-nums text-right sm:text-center">${itinerary.totalMedallionQualificationSegments}</td>
+    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 tabular-nums text-right">${itinerary.totalMedallionQualificationDollars}</td>
+    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 tabular-nums text-right">${itinerary.totalBaseMiles}</td>
+    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 tabular-nums text-right">${itinerary.totalFareClassBonusMiles}</td>
+    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 tabular-nums text-right">${itinerary.totalMedallionStatusBonusMiles}</td>
+    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 tabular-nums text-right">${itinerary.totalCreditCardBonusMiles}</td>
+    <td class="block sm:table-cell px-1 border border-0.5 sm:border-0 border-slate-500 tabular-nums text-right font-bold">${itinerary.totalMiles}</td>
   </tr>
   <tr class="block sm:hidden float-left sm:table-row sm:float-none">
     <th class="block sm:hidden px-1 border border-0.5 sm:border-l-0 border-gray-300 text-center">#</th>
-    <th class="block sm:hidden px-1 border border-0.5 border-gray-300 text-center">Flight</th>
-    <th class="block sm:hidden px-1 border border-0.5 border-gray-300 border-b-transparent sm:border-b-gray-300 text-center" colspan="2">Path</th>
-    <th class="block sm:hidden px-1 border border-0.5 border-gray-300 border-t-transparent                      text-center">&nbsp;</th>
-    <th class="block sm:hidden px-1 border border-0.5 border-gray-300 text-center">Fare</th>
-    <th class="block sm:hidden px-1 border border-0.5 border-gray-300 text-center">Distance</th>
-    <th class="block sm:hidden px-1 border border-0.5 border-gray-300 text-center">Eligible</th>
-    <th class="block sm:hidden px-1 border border-0.5 border-gray-300 text-center">Total</th>
-    <th class="block sm:hidden px-1 border border-0.5 border-gray-300 text-center">MQM</th>
-    <th class="block sm:hidden px-1 border border-0.5 border-gray-300 text-center">MQS</th>
-    <th class="block sm:hidden px-1 border border-0.5 border-gray-300 text-center">MQD</th>
-    <th class="block sm:hidden px-1 border border-0.5 border-gray-300 text-center">Miles</th>
-    <th class="block sm:hidden px-1 border border-0.5 border-gray-300 text-center">Fare</th>
-    <th class="block sm:hidden px-1 border border-0.5 border-gray-300 text-center">Status</th>
-    <th class="block sm:hidden px-1 border border-0.5 border-gray-300 text-center">Card</th>
+    <th class="block sm:hidden px-1 border border-0.5               border-gray-300 text-center">Flight</th>
+    <th class="block sm:hidden px-1 border border-0.5               border-gray-300 border-b-transparent sm:border-b-gray-300 text-center" colspan="2">Path</th>
+    <th class="block sm:hidden px-1 border border-0.5               border-gray-300 border-t-transparent                      text-center">&nbsp;</th>
+    <th class="block sm:hidden px-1 border border-0.5               border-gray-300 text-center">Fare</th>
+    <th class="block sm:hidden px-1 border border-0.5               border-gray-300 text-center">Distance</th>
+    <th class="block sm:hidden px-1 border border-0.5               border-gray-300 text-center">Eligible</th>
+    <th class="block sm:hidden px-1 border border-0.5               border-gray-300 text-center">Total</th>
+    <th class="block sm:hidden px-1 border border-0.5               border-gray-300 text-center">MQM</th>
+    <th class="block sm:hidden px-1 border border-0.5               border-gray-300 text-center">MQS</th>
+    <th class="block sm:hidden px-1 border border-0.5               border-gray-300 text-center">MQD</th>
+    <th class="block sm:hidden px-1 border border-0.5               border-gray-300 text-center">Miles</th>
+    <th class="block sm:hidden px-1 border border-0.5               border-gray-300 text-center">Fare</th>
+    <th class="block sm:hidden px-1 border border-0.5               border-gray-300 text-center">Status</th>
+    <th class="block sm:hidden px-1 border border-0.5               border-gray-300 text-center">Card</th>
     <th class="block sm:hidden px-1 border border-0.5 sm:border-r-0 border-gray-300 text-center">Total</th>
   </tr>
   </tfoot>
@@ -101,9 +101,9 @@
   </thead>
   <tbody class="inline sm:table-row-group text-xs lg:text-md font-medium">
   <tr class="block float-left sm:table-row sm:float-none odd:bg-white even:bg-gray-100">
-  <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-right">${itinerary.totalMedallionQualificationMiles / itinerary.totalCost | decimalPlaces:2}</td>
-  <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-right">${itinerary.totalMedallionQualificationDollars / itinerary.totalCost | decimalPlaces:2}</td>
-  <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 text-right">${itinerary.totalMiles / itinerary.totalCost | decimalPlaces:2}</td>
+  <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 tabular-nums text-right">${itinerary.totalMedallionQualificationMiles / itinerary.totalCost | decimalPlaces:2}</td>
+  <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 tabular-nums text-right">${itinerary.totalMedallionQualificationDollars / itinerary.totalCost | decimalPlaces:2}</td>
+  <td class="block sm:table-cell px-1 border border-0.5 border-gray-200 tabular-nums text-right">${itinerary.totalMiles / itinerary.totalCost | decimalPlaces:2}</td>
   </tr>
   </tbody>
 </table>
