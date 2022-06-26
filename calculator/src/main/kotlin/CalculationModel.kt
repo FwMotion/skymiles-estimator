@@ -25,6 +25,7 @@ val creditBonus150Pct: CreditCardBonusEarningRule =
     { dollars: USD -> (dollars.roundToInt().toDouble() * 1.5).roundToInt() }
 val creditBonus200Pct: CreditCardBonusEarningRule = { dollars: USD -> dollars.roundToInt() * 2 }
 val creditBonus300Pct: CreditCardBonusEarningRule = { dollars: USD -> dollars.roundToInt() * 3 }
+val creditBonus500Pct: CreditCardBonusEarningRule = { dollars: USD -> dollars.roundToInt() * 5 }
 
 fun creditBonus150PctWithThreshold(threshold: USD): CreditCardBonusEarningRule {
     return { dollars: USD ->
