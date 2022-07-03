@@ -151,6 +151,7 @@ enum class AirportCode(
     CDG("Paris"),
     CUN("Cancun"),
     CVG("Cincinnati"),
+    DEL("New Delhi"),
     DFW("Dallas/Fort Worth"),
     DTW("Detroit/Wayne County"),
     DXB("Dubai"),
@@ -182,6 +183,7 @@ enum class AirportCode(
 val segmentDistances: Map<Pair<AirportCode, AirportCode>, DistanceMiles> = buildMap {
     val distances = mapOf(
         AirportCode.AMS to AirportCode.ATL to 4401.0,  // calculated from booking flow total MQMs
+        AirportCode.AMS to AirportCode.DEL to 3961.0,  // estimated from airmilescalculator.com
         AirportCode.AMS to AirportCode.DTW to 3940.0,  // calculated from booking flow total MQMs
         AirportCode.AMS to AirportCode.DXB to 3215.0,  // estimated from booking flow total MQMs
         AirportCode.AMS to AirportCode.MSP to 4166.0,  // calculated from booking flow total MQMs
@@ -205,6 +207,7 @@ val segmentDistances: Map<Pair<AirportCode, AirportCode>, DistanceMiles> = build
         AirportCode.ATL to AirportCode.SEA to 2181.0,  // calculated from booking flow total MQMs
         AirportCode.ATL to AirportCode.SFO to 2139.0,  // calculated from booking flow total MQMs
         AirportCode.BKK to AirportCode.ICN to 2270.0,  // calculated from booking flow total MQMs
+        AirportCode.CDG to AirportCode.DEL to 4087.0,  // estimated from airmilescalculator.com
         AirportCode.CDG to AirportCode.DTW to 3962.0,  // calculated from booking flow total MQMs
         AirportCode.CDG to AirportCode.DXB to 3259.0,  // estimated from booking flow total MQMs
         AirportCode.CDG to AirportCode.HND to 6046.0,  // estimated from airmilescalculator.com
