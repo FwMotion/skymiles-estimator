@@ -4,6 +4,7 @@ import {
   calculateItineraryEarnings,
   CreditCard,
   FareClass,
+  importItinerary,
   Itinerary,
   ItinerarySegment,
   MedallionStatus,
@@ -51,6 +52,7 @@ export class SkymilesEstimator {
   }
 
   windowHashChangedListener
+
   windowHashChanged() {
     let hash = window.location.hash;
 
@@ -84,6 +86,30 @@ export class SkymilesEstimator {
     this.updateUrlFragment()
   }
 
+  importItinerary() {
+    // TODO: Don't default to AirFrance for imports; either select from domain or allow dropdown or similar
+    const itinerary = importItinerary(TicketSeller.AF, prompt("Enter AirFrance Booking Flow URL"))
+
+    if (itinerary === null) {
+      return this.resetItinerary()
+    }
+
+    itinerary.medallionStatus = this.itinerary.medallionStatus
+    itinerary.creditCard = this.itinerary.creditCard
+
+    if (itinerary.baseCost === 0.0) {
+      itinerary.baseCost = this.itinerary.baseCost
+    }
+    if (itinerary.airlineFees === null) {
+      itinerary.airlineFees = this.itinerary.airlineFees
+    }
+    if (itinerary.governmentFeesAndTaxes === null) {
+      itinerary.governmentFeesAndTaxes = this.itinerary.governmentFeesAndTaxes
+    }
+
+    this.itinerary = itinerary
+  }
+
   resetItinerary() {
     this.itinerary = new Itinerary(
       MedallionStatus.NONE,
@@ -108,7 +134,7 @@ export class SkymilesEstimator {
 
   setSampleItinerary(sampleNumber) {
     let sampleItinerary
-    switch(sampleNumber) {
+    switch (sampleNumber) {
       default:
       case 1:
         sampleItinerary = "#PKE1182/264.5/118.97DL_RESERVE/OMADTWDL4682DLDLT/DTWICNKE7274DLKEU/ICNSGNKE685KEKEU/SGNICNKE684KEKEU/ICNATLKE5035DLKEU/ATLOMAKE3628DLKEU"
