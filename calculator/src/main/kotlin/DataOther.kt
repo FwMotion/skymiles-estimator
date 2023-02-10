@@ -168,6 +168,7 @@ enum class AirportCode(
     MCI("Kansas City"),
     MEX("Mexico City"),
     MSP("Minneapolis/St. Paul"),
+    MUC("Munich"),
     OMA("Omaha"),
     ORD("Chicago"),
     //PVG("Shanghai (Pudong)"),
@@ -186,6 +187,7 @@ val segmentDistances: Map<Pair<AirportCode, AirportCode>, DistanceMiles> = build
         AirportCode.AMS to AirportCode.DEL to 3961.0,  // estimated from airmilescalculator.com
         AirportCode.AMS to AirportCode.DTW to 3940.0,  // calculated from booking flow total MQMs
         AirportCode.AMS to AirportCode.DXB to 3215.0,  // estimated from booking flow total MQMs
+        AirportCode.AMS to AirportCode.ICN to 5328.0,  // estimated from airmilescalculator.com
         AirportCode.AMS to AirportCode.MSP to 4166.0,  // calculated from booking flow total MQMs
         AirportCode.ANC to AirportCode.MSP to 2518.0,  // calculated from booking flow total MQMs
         AirportCode.ANC to AirportCode.SEA to 1448.0,  // calculated from booking flow total MQMs
@@ -201,6 +203,7 @@ val segmentDistances: Map<Pair<AirportCode, AirportCode>, DistanceMiles> = build
         AirportCode.ATL to AirportCode.JFK to 760.0,   // calculated from booking flow total MQMs
         AirportCode.ATL to AirportCode.MCI to 693.0,   // calculated from booking flow total MQMs
         AirportCode.ATL to AirportCode.MEX to 1557.0,  // calculated from booking flow total MQMs
+        AirportCode.ATL to AirportCode.MUC to 4797.0,  // estimated from airmilescalculator.com
         AirportCode.ATL to AirportCode.OMA to 821.0,   // verified
         AirportCode.ATL to AirportCode.ORD to 606.0,   // calculated from booking flow total MQMs
         AirportCode.ATL to AirportCode.PVR to 1558.0,  // calculated from booking flow total MQMs
@@ -222,6 +225,7 @@ val segmentDistances: Map<Pair<AirportCode, AirportCode>, DistanceMiles> = build
         AirportCode.DFW to AirportCode.MSP to 852.0,   // calculated from booking flow total MQMs
         AirportCode.DTW to AirportCode.ICN to 6636.0,  // calculated from booking flow total MQMs
         AirportCode.DTW to AirportCode.JFK to 509.0,   // calculated from booking flow total MQMs
+        AirportCode.DTW to AirportCode.MUC to 4347.0,  // estimated from airmilescalculator.com
         AirportCode.DTW to AirportCode.OMA to 651.0,   // calculated from booking flow total MQMs
         //AirportCode.FAI to AirportCode.MSP to 2460.0,  // this route discontinued?
         AirportCode.FAI to AirportCode.SEA to 1533.0,  // calculated from booking flow total MQMs
